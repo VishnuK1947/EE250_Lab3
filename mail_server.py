@@ -153,6 +153,11 @@ def get_inbox_route(recipient: str):
     return res
 
 
+# TODO: implement a rout e to get all mail entries for a sender
+# HINT: start with soemthing like this:
+#   @app.route('/mail/sent/<sender>', ...)
+
+
 @app.route("/mail/sent/<sender>", methods=["GET"])
 def get_sent_route(sender: str):
     """
@@ -167,11 +172,6 @@ def get_sent_route(sender: str):
     res = jsonify(get_sent(sender))
     res.status_code = 200
     return res
-
-
-# TODO: implement a rout e to get all mail entries for a sender
-# HINT: start with soemthing like this:
-#   @app.route('/mail/sent/<sender>', ...)
 
 
 if __name__ == "__main__":
