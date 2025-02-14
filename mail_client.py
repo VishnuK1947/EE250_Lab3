@@ -2,7 +2,7 @@ import requests
 import argparse
 import pprint  # For pretty printing
 
-SERVER = "http://127.0.0.1:5000"
+SERVER = "http://172.20.10.13:5000"
 
 import logging
 
