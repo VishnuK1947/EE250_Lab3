@@ -25,12 +25,26 @@ def load_mail() -> List[Dict[str, str]]:
 
 
 def save_mail(mail: List[Dict[str, str]]) -> None:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """
+    TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Saves the mail list to the json file
+
+    Args:
+        mail (List[Dict[str, str]]): A list of dictionaries representing mail entries
+    """
     thisdir.joinpath("mail_db.json").write_text(json.dumps(mail, indent=4))
 
 
 def add_mail(mail_entry: Dict[str, str]) -> str:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Adds a mail entry to the mail list and saves it to json file
+
+    Args:
+        mail_entry (Dict[str, str]): A dict representing the mail entry (to add)
+
+    Returns:
+        str: The unique ID of the added mail entry
+    """
     mail = load_mail()
     mail.append(mail_entry)
     mail_entry["id"] = str(uuid.uuid4())  # generate a unique id for the mail entry
@@ -39,7 +53,15 @@ def add_mail(mail_entry: Dict[str, str]) -> str:
 
 
 def delete_mail(mail_id: str) -> bool:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Deletes mail entry from the mail list and saves it to json file
+
+    Args:
+        mail_id (str): The id of mail entry to delete
+
+    Returns:
+        bool: True if mail was deleted, otherwise False
+    """
     mail = load_mail()
     for i, entry in enumerate(mail):
         if entry["id"] == mail_id:
@@ -51,7 +73,15 @@ def delete_mail(mail_id: str) -> bool:
 
 
 def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Gets a mail entry from the mail list
+
+    Args:
+        mail_id (str): The id of the mail entry to get through the function
+
+    Returns:
+        dict: A dict of the mail entry if it exists, None otherwise
+    """
     mail = load_mail()
     for entry in mail:
         if entry["id"] == mail_id:
@@ -61,7 +91,16 @@ def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
 
 
 def get_inbox(recipient: str) -> List[Dict[str, str]]:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Gets all mail entries for a recipient
+
+    Args:
+        recipient (str): The recipient from which to get the mail entries
+
+    Returns:
+        list: A list of dict showcasing the mail entries
+
+    """
     mail = load_mail()
     inbox = []
     for entry in mail:
@@ -72,7 +111,14 @@ def get_inbox(recipient: str) -> List[Dict[str, str]]:
 
 
 def get_sent(sender: str) -> List[Dict[str, str]]:
-    """TODO: fill out this docstring (using the load_mail docstring as a guide)"""
+    """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Gets all mail entries for a sender
+
+    Args:
+        sender (str): The sender from which to get mail entries
+    Returns:
+        list: A list of dict showcasing mail entries
+    """
     mail = load_mail()
     sent = []
     for entry in mail:
